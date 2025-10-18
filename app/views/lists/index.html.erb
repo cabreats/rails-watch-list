@@ -6,12 +6,14 @@
     <div class="cards-grid mt-2">
     <% @lists.each do |list| %>
         <%= link_to list_path(list) do %>
-        <div class="card" style="width: 18rem;">
-            <%= image_tag "classic.jpeg", class: "card-img", alt: list.name %>
-            <div class="card-image-overlay">
-            <h2 class="card-title"><%= list.name %></h2>
+            <div class="card" style="width: 18rem;">
+                <% if list.image.attached? %>
+                    <%= image_tag list.image, class: "card-img", alt: list.name %>
+                <% end %>
+                <div class="card-image-overlay">
+                    <h2 class="card-title text-stroke-black"><%= list.name %></h2>
+                </div>
             </div>
-        </div>
         <% end %>
     <% end %>
     </div>
