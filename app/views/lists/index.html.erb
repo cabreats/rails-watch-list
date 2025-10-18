@@ -1,11 +1,21 @@
 <div class="hero">
     <h1>Save any kind of movies</h1>    
 </div>
-<div >
-    <ul class="container"> 
-        <% @lists.each do |list| %>
-        <li class="card-list"><%= link_to "#{list.name}", list_path(list) %></li>
+
+<div class="container">
+    <div class="cards-grid mt-2">
+    <% @lists.each do |list| %>
+        <%= link_to list_path(list) do %>
+        <div class="card" style="width: 18rem;">
+            <%= image_tag "classic.jpeg", class: "card-img", alt: list.name %>
+            <div class="card-image-overlay">
+            <h2 class="card-title"><%= list.name %></h2>
+            </div>
+        </div>
         <% end %>
-    </ul>
+    <% end %>
+    </div>
+    <div class="text-center mt-3">
+        <%= link_to "New List", new_list_path, class: "btn btn-success rounded-4" %>
+    </div>
 </div>
-<%= link_to "New List", new_list_path %>
